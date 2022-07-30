@@ -1,19 +1,21 @@
 from generator import generate
 import json
 
-year = int(raw_input('Enter first two digit of Roll No. : '))
+year = int(input('Enter first two digit of Roll No. : '))
 # assert (year >= 14 and year <= 17), 'Entered Year is not correct'
 
-branch = str(raw_input('Enter branch abbreviation : ')).upper()
+branch = str(input('Enter branch abbreviation : ')).upper()
 branches = ['CE', 'CS', 'ME', 'MM', 'EE', 'EC']
 assert branch in branches, 'Entered branch abbreviation not correct'
 
-degree = int(raw_input('Enter 1 for single degree and 2 for dual degree : '))
+degree = int(input('Enter 1 for single degree and 2 for dual degree : '))
 assert degree in [1, 2], 'Entered degree not correct'
 
-lastroll = int(raw_input('Enter last possible Roll No. : '))
+lastroll = int(input('Enter last possible Roll No. : '))
 # assert lastroll <= 46 and lastroll >= 9, 'lastroll should be less than 46'
-firstroll = int(raw_input('Enter first Roll No. : '))
+firstroll = int(input('Enter first Roll No. : '))
+
+#rollarray = [1-9.22, 8-8.72, 10- 8.58, 17- 8.54, 24, 41-9.21]
 
 depc = []
 for i in range(firstroll, lastroll):
@@ -25,7 +27,7 @@ for i in range(firstroll, lastroll):
 		roll = str(year) + str(branch) + '0' + str(degree) + '0' + str(i)
 
 	with open("stres.json") as f:
-		prev = json.load(f)
+		prev = json.loads(f.read())
 		if roll in prev:
 			continue
 	scheme = 0
